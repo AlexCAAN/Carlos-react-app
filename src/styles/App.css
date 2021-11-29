@@ -1,0 +1,18 @@
+a {
+  color: rgb(129, 139, 230);
+  text-decoration: unset;
+  padding: 5px;
+}
+
+.App {
+  text-align: center;
+}
+
+.App {
+  background-color: #282834;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+}
