@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import moment from "moment";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import '../styles/App.css';
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
@@ -10,15 +8,14 @@ import contact from "./pages/contact";
 import blog from "./pages/blog";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import NoMatch from './pages/no-match'
+import "../styles/main.scss";
 
 export default class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container">
         <Router>
           <div>
-            <h1>Carlos Leany Portfolio</h1>
-            <div>{moment().format("MMMM Do YYYY, h:mm:ss a")}</div>
             <NavigationContainer />
 
             <Switch>
