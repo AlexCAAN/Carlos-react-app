@@ -195,15 +195,17 @@ export default class PortfolioForm extends React.Component {
                         djsConfig={this.djsConfig()}
                         eventHandlers={this.handleBannerDrop()}
                     >
-                        
+                        <div className="dz-message">Banner</div>
                     </DropzoneComponent>
+
                     <DropzoneComponent
                         ref={this.logoRef}
                         config={this.componentConfig()}
                         djsConfig={this.djsConfig()}
                         eventHandlers={this.handleLogoDrop()}
                     >
-                    
+                    <div className="dz-message">Logo</div>
+
                     </DropzoneComponent>
                 </div>
 
