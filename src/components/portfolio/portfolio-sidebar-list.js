@@ -10,9 +10,16 @@ const PortfolioSidebarList = props => {
                 </div>
                 <div className="text-content">
                     <div className="title">{PortfolioItem.name}</div>
-                    <a className="delete-icon" onClick={() => props.handleDeleteClick(PortfolioItem)}>
-                        <FontAwesomeIcon icon="trash" />
-                    </a>
+
+                    <div className="actions">
+                        <a className="action-icon" onClick={() => props.handleEditClick(PortfolioItem)}>
+                            <FontAwesomeIcon icon="edit" />
+                        </a>
+
+                        <a className="action-icon" onClick={() => props.handleDeleteClick(PortfolioItem)}>
+                            <FontAwesomeIcon icon="trash" />
+                        </a>
+                    </div>
                 </div>
             </div>
         )

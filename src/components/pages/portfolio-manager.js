@@ -9,12 +9,28 @@ export default class PortfolioManager extends Component {
         super()
 
         this.state = {
-            PortfolioItems: []
+            PortfolioItems: [],
+            PortfolioToEdit: {}
         }
 
-        this.handleSuccessfulFormSubmission = this.handleSuccessfulFormSubmission.bind(this);
+        this.handleNewFormSubmission = this.handleNewFormSubmission.bind(this);
+        this.handleEditFormSubmission = this.handleEditFormSubmission.bind(this);
         this.handleFormSubmissionError = this.handleFormSubmissionError.bind(this);
         this.handleDeleteClick = this.handleDeleteClick.bind(this)
+        this.handleEditClick = this.handleEditClick.bind(this)
+        this.clearPortfolioToEdit = this.clearPortfolioToEdit.bind(this)
+    }
+
+    clearPortfolioToEdit() {
+        this.setState({
+            PortfolioToEdit: {}
+        })
+    }
+
+    handleEditClick(PortfolioItem) {
+        this.setState({
+            PortfolioToEdit: PortfolioItem
+        })
     }
 
     handleDeleteClick(PortfolioItem) {
@@ -34,7 +50,11 @@ export default class PortfolioManager extends Component {
         })
     }
 
-    handleSuccessfulFormSubmission(PortfolioItem) {
+    handleEditFormSubmission() {
+        this.getPortfolioItems()
+    }
+
+    handleNewFormSubmission(PortfolioItem) {
         this.setState({
             PortfolioItems: [PortfolioItem].concat(this.state.PortfolioItems)
         })
@@ -44,7 +64,7 @@ export default class PortfolioManager extends Component {
         console.log("handleFormSubmissionError error", error)
     }
 
-    gertPortfolioItems() {
+    getPortfolioItems() {
         axios.get('https://carlosleany.devcamp.space/portfolio/portfolio_items?order_by=created_at&direction=desc', {
             withCredentials : true
         }).then(response => {
@@ -57,7 +77,7 @@ export default class PortfolioManager extends Component {
     }
 
     componentDidMount() {
-        this.gertPortfolioItems();
+        this.getPortfolioItems();
     }
 
     render() {
@@ -65,15 +85,20 @@ export default class PortfolioManager extends Component {
             <div className="portfolio-manager-wrapper">
                 <div className="left-column">
                     <PortfolioForm
-                        handleSuccessfulFormSubmission = {this.handleSuccessfulFormSubmission}
+                        handleNewFormSubmission = {this.handleNewFormSubmission}
+                        handleEditFormSubmission = {this.handleEditFormSubmission}
                         handleFormSubmissionError = {this.handleFormSubmissionError}
+                        clearPortfolioToEdit={this.clearPortfolioToEdit}
+                        PortfolioToEdit={this.state.PortfolioToEdit}
                     />
                 </div>
 
                 <div className="right-column">
                     <PortfolioSidebarList 
                         handleDeleteClick={this.handleDeleteClick}
-                        data={this.state.PortfolioItems} />
+                        data={this.state.PortfolioItems}
+                        handleEditClick={this.handleEditClick}
+                    />
                 </div>
             </div>
         )
