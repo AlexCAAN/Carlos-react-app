@@ -2,20 +2,21 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash, faSignOutAlt, faEdit, faEraser } from "@fortawesome/free-solid-svg-icons";
+import { faTrash, faSignOutAlt, faEdit, faEraser, faDragon } from "@fortawesome/free-solid-svg-icons";
 
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
 import About from "./pages/about";
 import contact from "./pages/contact";
 import blog from "./pages/blog";
+import BlogDetail from "./pages/blog-detail";
 import PortfolioManager from "./pages/portfolio-manager";
 import PortfolioDetail from "./portfolio/portfolio-detail";
 import Auth from "./pages/auth";
 import NoMatch from './pages/no-match'
 import "../styles/main.scss";
 
-library.add(faTrash, faSignOutAlt, faEdit, faEraser)
+library.add(faTrash, faSignOutAlt, faEdit, faEraser, faDragon)
 
 export default class App extends Component {
   constructor(props) {
@@ -110,6 +111,7 @@ export default class App extends Component {
               <Route path="/about-me" component={About} />
               <Route path="/contact" component={contact} />
               <Route path="/blog" component={blog} />
+              <Route path="/b/:slug" component={BlogDetail} />
 
               {this.state.loggedInStatus === "LOGGED_IN" ? (
                 this.authorizedPages()
