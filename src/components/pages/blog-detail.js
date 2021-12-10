@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 export default class BlogDetail extends Component {
     constructor(props) {
@@ -43,6 +44,13 @@ export default class BlogDetail extends Component {
                     <div className="content">
                         {content}
                     </div>
+
+                    <Link to='/blog'>
+                        <button className='back-to-blog'>
+                            More Blogs?
+                        </button>
+                    </Link>
+
                 </div>
             </div>
         )

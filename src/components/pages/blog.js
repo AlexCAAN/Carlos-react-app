@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import BlogItem from "../blog/blog-item";
+import BlogModal from "../modals/blog-modal";
 
 class Blog extends React.Component {
   constructor() {
@@ -10,12 +11,36 @@ class Blog extends React.Component {
     this.state = {
       blogItems: [],
       totalCount: 0,
-      currentPage: 0
+      currentPage: 0,
+      isLoading: true,
+      blogModalIsOpen: false
     }
 
     this.getBlogItems = this.getBlogItems.bind(this);
     this.onScroll = this.onScroll.bind(this)
     window.addEventListener("scroll", this.onScroll, false)
+    this.handleNewBlogClick = this.handleNewBlogClick.bind(this)
+    this.handleModelClose = this.handleModelClose.bind(this)
+    this.handleSuccesfullNewBlogSubmision = this.handleSuccesfullNewBlogSubmision.bind(this)
+  }
+
+  handleSuccesfullNewBlogSubmision(blog) {
+    this.setState({
+      blogModalIsOpen: false,
+      blogItems: [blog].concat(this.state.blogItems)
+    })
+  }
+
+  handleModelClose() {
+    this.setState({
+      blogModalIsOpen: false
+    })
+  }
+
+  handleNewBlogClick() {
+    this.setState({
+      blogModalIsOpen: true
+    })
   }
 
   onScroll() {
@@ -60,16 +85,30 @@ class Blog extends React.Component {
 
     return (
       <div className="blog-container">
+          <BlogModal
+            handleSuccesfullNewBlogSubmision={this.handleSuccesfullNewBlogSubmision}
+            handleModelClose={this.handleModelClose}
+            modalIsOpen={this.state.blogModalIsOpen} 
+          />
+
+          {this.props.loggedInStatus === "LOGGED_IN" ? (
+            <div className="new-blog-link">
+              <a onClick={this.handleNewBlogClick}>
+                <FontAwesomeIcon icon="plus-square" />
+              </a>
+            </div>
+          ) : null }
+
         <div className="content-container">
           {blogRecords}
         </div>
 
-        {/* {this.state.isLoading ? ( */}
+        {this.state.isLoading ? (
           <div className="content-loader">
             <h5>tiny dragon, so cute</h5>
             <FontAwesomeIcon icon='dragon' spin/>
           </div>
-        {/* ) : null } */}
+        ) : null }
       </div>
     )
   }

@@ -305,7 +305,7 @@ export default class PortfolioForm extends React.Component {
                 </div>
 
                 <div>
-                    <button className="btn" type="submit">Save</button>
+                    <button className="btn save-btn" type="submit">Save</button>
                 </div>
             </form>
         )

@@ -1,3 +1,23 @@
 .btn {
     @include base-btn();
 }
+
+.save-btn {
+    width: 100px;
+}
+
+.back-to-blog {
+    border: none;
+    background-color: $offwhite;
+    cursor: pointer;
+    font-size: 1.5em;
+    margin: 40px 0px;
+    padding: 10px 10px;
+    color: $charcoal;
+    transition: 0.5s ease-in-out;
+
+    &:hover {
+        background-color: $charcoal;
+        color: $offwhite;
+    }
+}

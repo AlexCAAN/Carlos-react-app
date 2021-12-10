@@ -7,10 +7,10 @@
         a{
             margin-left: 15px;
             cursor: pointer;
-            color: $teal;
+            color: $primary;
             transition: 0.5s ease-in-out;
             &:hover {
-                color: $dark-teal;
+                color: $dark-primary;
             }
         }
     }
@@ -32,7 +32,7 @@
             color: $grey;
             text-decoration: none;
             &:hover {
-                color: black;
+                color: rgb(107, 28, 28);
             }
         }
 
