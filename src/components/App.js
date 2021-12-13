@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import axios from "axios";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash, faSignOutAlt, faEdit, faEraser, faDragon, faPlusSquare } from "@fortawesome/free-solid-svg-icons";
 
 import NavigationContainer from "./navigation/navigation-container";
 import Home from "./pages/home";
@@ -15,12 +13,13 @@ import Auth from "./pages/auth";
 import NoMatch from './pages/no-match'
 import "../styles/main.scss";
 import Blog from "./pages/blog";
-
-library.add(faTrash, faSignOutAlt, faEdit, faEraser, faDragon, faPlusSquare)
+import Icons from "../helpers/icons";
 
 export default class App extends Component {
   constructor(props) {
     super(props)
+
+    Icons()
 
     this.state = {
       loggedInStatus: "NOT_LOGGED_IN"
@@ -111,9 +110,10 @@ export default class App extends Component {
               <Route path="/about-me" component={About} />
               <Route path="/contact" component={contact} />
 
-              <Route path="/blog" 
+              <Route
+                path="/blog" 
                 render={props => (
-                  <Blog {...props} loggedInStatus={this.loggedInStatus} />
+                  <Blog {...props} loggedInStatus={this.state.loggedInStatus} />
                 )}
               />
 

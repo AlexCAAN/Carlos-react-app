@@ -3,7 +3,7 @@ import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, useHistory } from "react-router-dom";
 
-const NavigationComponent = (props) =>{
+const NavigationComponent = (props) => {
   const dynamicLink = (route, linkText) => {
     return (
       <div className='nav-link-wrapper'>

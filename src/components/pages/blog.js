@@ -97,7 +97,7 @@ class Blog extends React.Component {
                 <FontAwesomeIcon icon="plus-square" />
               </a>
             </div>
-          ) : null }
+          ) : true }
 
         <div className="content-container">
           {blogRecords}
