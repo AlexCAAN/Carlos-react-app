@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import ReactHtmlParser from "react-html-parser"
 
+import BlogForm from "../blog/blog-form"
 import BlogFeaturedImage from '../blog/blog-featured-image';
 
 export default class BlogDetail extends Component {
@@ -11,8 +12,15 @@ export default class BlogDetail extends Component {
 
         this.state = {
             currentId: this.props.match.params.slug,
-            blogItem: {}
+            blogItem: {},
+            editMode: false
         }
+
+        this.handleEditClick = this.handleEditClick.bind(this)
+    }
+
+    handleEditClick() {
+        this.setState({editMode: true})
     }
 
     getBlogItem() {
@@ -35,25 +43,33 @@ export default class BlogDetail extends Component {
             featured_image_url,
             blog_status
         } = this.state.blogItem
-        return (
-            <div className="blog-container">
-                <div className="content-container">
-                    <h1>{title}</h1>
 
-                    <BlogFeaturedImage img={featured_image_url} />
+        const contentManager = () => {
+            if (this.state.editMode) {
+                return <BlogForm editMode={this.state.editMode} blog={this.state.blogItem} />
+            } else {
+                return (
+                    <div className="content-container">
+                        <h1 onClick={this.handleEditClick}>{title}</h1>
 
-                    <div className="content">
-                        {ReactHtmlParser(content)}
+                        <BlogFeaturedImage img={featured_image_url} />
+
+                        <div className="content">
+                            {ReactHtmlParser(content)}
+                        </div>
+
+                        <Link to='/blog'>
+                            <button className='back-to-blog'>
+                                More Blogs?
+                            </button>
+                        </Link>
                     </div>
+                )
+            }
+        }
 
-                    <Link to='/blog'>
-                        <button className='back-to-blog'>
-                            More Blogs?
-                        </button>
-                    </Link>
-
-                </div>
-            </div>
+        return (
+            <div className="blog-container">{contentManager()}</div>
         )
     }
 }
