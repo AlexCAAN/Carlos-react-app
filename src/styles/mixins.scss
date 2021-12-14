@@ -44,3 +44,10 @@
     display: grid;
     grid-gap: 21px;
 }
+
+@mixin action {
+    cursor: pointer;
+    color: $offwhite;
+    font-size: 1.5em;
+    transition: 0.5s ease-in-out;
+}

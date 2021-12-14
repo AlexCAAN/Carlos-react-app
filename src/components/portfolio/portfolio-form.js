@@ -42,13 +42,13 @@ export default class PortfolioForm extends React.Component {
         axios.delete(
             `https://api.devcamp.space/portfolio/delete-portfolio-image/${this.state.id}
             ?image_type=${imageType}`, {withCredentials: true}
-            ).then (response => {
-                this.setState({
-                    [`${imageType}_url`]: ""
-                })
-            }).catch( error => {
-                console.log("deleteImage error", error);
+        ).then (response => {
+            this.setState({
+                [`${imageType}_url`]: ""
             })
+        }).catch( error => {
+            console.log("deleteImage error", error);
+        })
     }
 
     componentDidUpdate() {
@@ -179,7 +179,7 @@ export default class PortfolioForm extends React.Component {
                 ref.current.dropzone.removeAllFiles();
               });
         }).catch(error => {
-            console.log("portfolio form handle submuit error", error);
+            console.log("portfolio form handle submit error", error);
         })
 
         event.preventDefault();
@@ -240,7 +240,7 @@ export default class PortfolioForm extends React.Component {
 
                 <div className="image-uploaders">
                     {this.state.thumb_image_url && this.state.editMode ? (
-                        <div className="portfolio-manager-image-wrapper">
+                        <div className="image-wrapper">
                             <img src={this.state.thumb_image_url} />
 
                             <div className="image-removal-link">
@@ -261,7 +261,7 @@ export default class PortfolioForm extends React.Component {
                     )}
 
                     {this.state.banner_image_url && this.state.editMode ? (
-                        <div className="portfolio-manager-image-wrapper">
+                        <div className="image-wrapper">
                             <img src={this.state.banner_image_url} />
 
                             <div className="image-removal-link">
@@ -282,7 +282,7 @@ export default class PortfolioForm extends React.Component {
                     )}
 
                     {this.state.logo_url && this.state.editMode ? (
-                        <div className="portfolio-manager-image-wrapper">
+                        <div className="image-wrapper">
                             <img src={this.state.logo_url} />
                             
                             <div className="image-removal-link">
