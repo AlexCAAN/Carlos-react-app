@@ -45,6 +45,13 @@
     grid-gap: 21px;
 }
 
+@mixin two-column-fancy {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 84px);
+}
+
 @mixin action {
     cursor: pointer;
     color: $offwhite;

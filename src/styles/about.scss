@@ -1,0 +1,11 @@
+.about-grid {
+    @include two-column-fancy();
+
+    .right-column {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 100px;        
+    }
+}
