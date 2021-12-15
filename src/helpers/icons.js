@@ -8,7 +8,9 @@ import {
     faPhoneAlt,
     faAt,
     faClock,
-    faMapMarkerAlt
+    faMapMarkerAlt,
+    faEnvelope,
+    faLock
 } from "@fortawesome/free-solid-svg-icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
 
@@ -23,7 +25,9 @@ const Icons = () => {
         faPhoneAlt,
         faAt,
         faClock,
-        faMapMarkerAlt
+        faMapMarkerAlt,
+        faEnvelope,
+        faLock
     )
 }
 

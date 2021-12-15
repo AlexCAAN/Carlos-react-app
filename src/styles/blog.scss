@@ -5,6 +5,25 @@
     height: 95%;
     position: relative;
 
+    .admin-blog-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0px;
+        border: 0.5px solid rgba(204, 204, 204, 0.137);
+
+        a {
+            margin-left: 15px;
+            margin-top: 60px;
+            cursor: pointer;
+        }
+
+        .blog-icon {
+            font-size: 2em;
+            color: #f19204;
+        }
+    }
+
     .new-blog-link {
         position: fixed;
         right: 0;
